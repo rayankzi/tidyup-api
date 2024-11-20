@@ -3,5 +3,5 @@ export function sayHello(name: string | null = null): string {
 }
 
 export function getAIRecommendations(treeRepresentation: string | null = null): string {
-  return `This is the tree representation ${treeRepresentation}`;
+  return `This is the tree representation ${treeRepresentation || "none available"}`;
 }
