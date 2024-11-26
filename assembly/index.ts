@@ -9,8 +9,10 @@ const modelName: string = "text-generator";
 
 export function getAIRecommendations(
   treeRepresentation: string | null = null,
+  additionalText: string | null = null,
 ): string {
   if (!treeRepresentation) return "No tree representation found.";
+  if (!additionalText) return "No additional text found.";
 
   const instruction = `
     You are a file organization assistant tasked with analyzing directory structures, presented in a tree-like format, 
@@ -27,6 +29,7 @@ export function getAIRecommendations(
       3. Recommend handling methods for duplicate or redundant files, unused files, or potential clutter.
       4. Maintain a clear hierarchy when reorganizing subfolders, ensuring simplicity and accessibility.
       5. Highlight ambiguities or uncertainties in the structure and suggest general best practices if needed.
+      6. Use any additional user input to make your response better.
     
     Your response must include the following sections:
       1. Explanation of Recommendations: A clear explanation of your reasoning and proposed strategy.
@@ -53,8 +56,11 @@ export function getAIRecommendations(
     Tree representation:
     ${treeRepresentation}
     
+    Here is some extra user input (note that it may be blank or have negligible info in it)
+    ${additionalText}    
+    
     Your tasks are to:
-      1. Analyze the provided directory structure and metadata
+      1. Analyze the provided directory structure, metadata, and extra user input.
       2. Recommend how to organize the files and folders logically, 
          grouping them based on file types, names, or timestamps where appropriate
       3. Provide a revised tree representation of the directory, clearly marked as follows:
