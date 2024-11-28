@@ -48,6 +48,8 @@ export function getAIRecommendations(
     
     Use the structure and metadata provided to tailor practical and actionable suggestions 
     for optimizing file organization. Maintain a concise and professional tone in your response.
+
+    Furthermore, because this resposne will be shown in the terminal, do not use the double asterisk notation ** to bold things, as it will look bad for the user. However, feel free to use the asterisk for bullet points.
   `;
   const prompt = `
     Below is a tree representation of a directory structure that needs to be organized. 
